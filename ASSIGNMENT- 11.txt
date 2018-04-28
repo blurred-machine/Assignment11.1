@@ -1,0 +1,43 @@
+ASSIGNMENT- 11.1
+(Acadgild Assignment)
+
+
+
+Q.1) What is the use of SQLite open helper class inSQLite?
+
+Ans.1) 
+1) "SQLiteOpenHelper" is a helper class to manage database creation and version management.
+2) This class is found inside android.database.sqlite package.
+3) Fistly, we will create a class, and then we will extend SQLiteOpenHelper inside the class that we created.
+4) Inside this class we need to override "onCreate(SQLiteDatabase)" and "onUpgrade(SQLiteDatabase, int, int)" method.
+5) This class takes care of opening the database if it exists, creating it if it does not, and upgrading it as necessary.
+6) This class makes it easy for ContentProvider implementations to defer opening and upgrading the database until first use,
+	to avoid blocking application startup with long-running database upgrades.
+7) Constructor of this class is defined as: SQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+	where,
+	Context: (Context) to use for locating paths to the the database. This value may be null.
+	Name: (String) of the database file, or null for an in-memory database
+	Factory: (SQLiteDatabase.CursorFactory) to use for creating cursor objects, or null for the default
+	Version: (int) number of the database (starting at 1); if the database is older, onUpgrade(SQLiteDatabase, int, int) will be used to upgrade the database; if the database is newer, onDowngrade(SQLiteDatabase, int, int) will be used to downgrade the database
+
+
+
+Q.2) What is the use of OnUpgrade function in SQLiteOpenHelper class?
+
+Ans.2)
+1) "onUpgrade()" is called when there are some changes made in the database schema (version numbers are different).
+2) "onUpgrade()" is basically for handling new db changes(could be new columns addition,table addition) for any new version of the app.
+3) The purpose of onUpgrade is to manage a new database structure.
+4) One of the most common use of "onUpgrade()" is to drop tables that are to be changed and recreate them, with variables defined in code for SQL statements.
+
+
+
+Q.3) How to show SQLite database table information in Android application what is the best way to do it?
+
+Ans.3)
+1) According to me, we can use TableLayout with cursor to display table in best way.
+2) Showing database information will be better suited with table layout, since table layout is not an adapter view, so we can't use cursor adapter with it.
+3) TableLayout is a layout that arranges its children into rows and columns. A TableLayout consists of a number of TableRow objects, each defining a row
+4) Cursor is the Interface which represents a 2 dimensional table of any database. When you try to retrieve some data using SELECT statement, then the database will first create a CURSOR object and return its reference to you. In simple words, Cursor is a Interface whice returns collection of your query data.
+
+
